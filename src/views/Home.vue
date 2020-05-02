@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <button @click="handleDownload">download</button>
+    <button @click="handleRandom">random</button>
     <button @click="handlePlay">play</button>
   </div>
 </template>
@@ -31,6 +32,15 @@ export default {
       link.download = "name.mid";
       link.href = this.track.getMidi();
       link.click();
+    },
+    handleRandom() {
+      const b = new Beat(
+        [Duration.Eighth, Duration.Quarter],
+        10
+      );
+      const t = new Track(b, 10);
+      this.track = t;
+      // t.getMidi();
     },
     async handlePlay() {
       const pipe = { key: 0 };
@@ -89,14 +99,7 @@ export default {
       "_tone_0520_Aspirin_sf2_file"
     );
 
-    const b = new Beat([Duration.Eighth], 5);
-    b.print();
-
-    const t = new Track(b, 7);
-    t.print();
-
-    this.track = t;
-    t.getMidi();
+    this.handleRandom();
   }
 };
 </script>
