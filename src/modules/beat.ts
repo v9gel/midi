@@ -1,4 +1,5 @@
 import HelpMath from "./helpMath";
+// @ts-ignore
 import * as MidiWriter from "midi-writer-js";
 
 class Beat {
@@ -31,7 +32,7 @@ class Beat {
       noteEvent.push(new MidiWriter.NoteEvent({ pitch: "C4", duration: e }));
     });
 
-    track.addEvent(noteEvent, function(event, index) {
+    track.addEvent(noteEvent, function() {
       return { sequential: true };
     });
 

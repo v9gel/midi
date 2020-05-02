@@ -1,4 +1,4 @@
-class Note {
+export class Note {
   private readonly duration: string;
   private readonly pitch: string;
   constructor(duration: string, pitch: string) {
@@ -14,5 +14,3 @@ class Note {
     return this.pitch;
   }
 }
-
-export default Note;

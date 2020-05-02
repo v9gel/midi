@@ -1,6 +1,7 @@
 import Beat from "@/modules/beat";
-import Note from "@/modules/note";
+import { Note } from "@/modules/note";
 import HelpMath from "@/modules/helpMath";
+// @ts-ignore
 import * as MidiWriter from "midi-writer-js";
 
 class Track {
@@ -22,14 +23,19 @@ class Track {
     console.log(this.track);
   }
 
-  getMidi(){
+  getMidi() {
     const track = new MidiWriter.Track();
     const noteEvent: MidiWriter.NoteEvent = [];
     this.track.map(e => {
-      noteEvent.push(new MidiWriter.NoteEvent({ pitch: e.getPitch(), duration: e.getDuration() }));
+      noteEvent.push(
+        new MidiWriter.NoteEvent({
+          pitch: e.getPitch(),
+          duration: e.getDuration()
+        })
+      );
     });
 
-    track.addEvent(noteEvent, function(event, index) {
+    track.addEvent(noteEvent, function() {
       return { sequential: true };
     });
 

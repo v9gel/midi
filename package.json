@@ -51,7 +51,9 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/ban-ts-ignore": "off"
+    }
   },
   "browserslist": [
     "> 1%",
